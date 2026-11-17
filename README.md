@@ -39,9 +39,15 @@ Dengan `--case --repeat 2 --max 0` hasilnya sekitar 280 ribu baris, jadi pakai `
 
 Tambah baris ke `data/words.csv` dalam bentuk **dinormalkan** (huruf kecil, tanpa angka, tanpa huruf ganda), lalu jalankan `python main.py --test`.
 
+## Asal data
+
+Kata dasar berasal dari survei mahasiswa Politeknik Negeri Sriwijaya, awal 2020, lalu dibersihkan dan dinormalkan
+(varian ejaan digabung jadi satu kata dasar). Kolom `source` di `data/words.csv`: `lama` (279 kata, dari survei) dan
+`baru` (34 kata, ditambah belakangan dari pengetahuan umum).
+
 ## Catatan
 
-Kata baru ditambah dari pengetahuan umum, belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi.
+Kata `baru` belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi.
 
 ## License
-[MIT](LICENSE). Boleh dipakai, termasuk untuk komersial. Sebelumnya CC BY-NC (non-komersial); sejak lisensi ini berubah, lisensi lama tidak berlaku lagi untuk versi baru.
+[MIT](LICENSE). Boleh dipakai bebas, termasuk komersial.
