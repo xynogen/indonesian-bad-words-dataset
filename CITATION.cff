@@ -4,6 +4,9 @@ type: dataset
 title: "Indonesian Bad Words Dataset"
 abstract: "Indonesian profanity base-word list from a Politeknik Negeri Sriwijaya student survey (early 2020), cleaned and normalized, with a CLI that generates spelling variants."
 authors:
+  - family-names: Putra
+    given-names: Rian Ramanda
+    alias: rianrahmanda
   - family-names: Fikri
     given-names: Muhammad
 repository-code: "https://github.com/xynogen/indonesian-bad-words-dataset"
