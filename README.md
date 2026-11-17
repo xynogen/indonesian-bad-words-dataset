@@ -1,43 +1,47 @@
 # Indonesian Bad Words Dataset
 
-Daftar kata kasar bahasa Indonesia **plus pencocok** yang tahan leetspeak (`k0nt0l`), huruf ganda (`kontolll`) dan simbol sisipan (`kont*ol`).
-Dataset ini belum lengkap; kontribusi kata baru diterima.
+Daftar kata kasar bahasa Indonesia (kata dasar) dan skrip untuk membuat file besar berisi variannya
+(leetspeak `k0nt0l`, huruf ganda `kontolll`, huruf besar/kecil, simbol `anj!ng`). Dataset belum lengkap; kontribusi diterima.
 
-*Indonesian profanity list with a small matcher that handles leetspeak, repeated letters and inserted symbols.*
+*Indonesian profanity base-word list and a small CLI that generates a large variant file (CSV/JSON).*
 
 ## Struktur
 
 | Path | Isi |
 |---|---|
-| `data/words.csv` | Kata dasar (sudah dinormalkan): `word, category, ambiguous, source` |
-| `badwords.py` | `normalize()`, `load()`, `find()` dan tes bawaan (`python badwords.py`) |
-
-Varian seperti `4nj1ng`, `Anjinggg`, `ANJING` tidak disimpan satu per satu lagi. Semuanya dinormalkan ke `anjing`
-(`4->a 3->e 1->i 0->o 5->s @->a !->i 9,6->g $->s 7->t`, huruf ganda jadi satu), jadi varian baru ikut tertangkap.
+| `data/words.csv` | Kata dasar yang sudah dinormalkan: `word, category, ambiguous, source` |
+| `main.py` | CLI pembuat varian (hanya stdlib Python) |
 
 Kategori: `makian`, `seksual`, `hewan`, `bodoh`, `inggris`.
-`ambiguous=1` berarti kata bisa biasa saja (`ayam`, `tahu`, `hitam`, `mati`, nama orang). Dilewati secara bawaan.
+`ambiguous=1` berarti kata bisa biasa saja (`ayam`, `tahu`, `hitam`, `mati`, nama orang). Dilewati kecuali pakai `--all`.
 
 ## Pakai
 
-from badwords import find, load
+python main.py -o out/variants.csv                              # leetspeak, maks 50 varian per kata
+python main.py -o out/variants.json --case --repeat 2 --max 0   # semua varian, plus huruf besar dan huruf ganda
+python main.py --category hewan -o -                            # ke stdout
+python main.py --test
 
-find("dasar k0nt0l")            # ['kontol']
-find("ayam goreng")             # []   (ayam = ambigu, dilewati)
-find("ayam", load(include_ambiguous=True))      # ['ayam']
-find("anjing", load({"seksual"}))               # []   (filter kategori)
+| Opsi | Arti |
+|---|---|
+| `-o` | File keluaran, `.json` atau lainnya (CSV). `-` = stdout. Folder dibuat otomatis |
+| `--category` | Batasi kategori, boleh diulang |
+| `--all` | Ikutkan kata ambigu |
+| `--case` | Tambah `UPPER` dan `Title` |
+| `--repeat N` | Ulangi huruf terakhir sampai N kali tambahan |
+| `--max N` | Maks varian per kata (default 50, `0` = semua) |
 
-Pencocokan per kata utuh, jadi `kontolan` tidak ditandai. Frasa (`anak lonte`) didukung. Angka murni (`1500`) aman.
-
-## Batasan
-
-- Tidak menangkap huruf yang dipisah spasi (`k o n t o l`) atau singkatan yang tidak ada di daftar.
-- Leetspeak bisa salah tangkap di kata campur angka dan huruf (misal `b4`); kata ambigu dimatikan bawaan untuk mengurangi false positive.
-- Kata baru ditambah dari pengetahuan umum, belum diuji pada teks nyata. Cek hasilnya sebelum dipakai untuk moderasi.
+Kolom keluaran: `variant, word, category`. Hasil ada di `out/` (tidak masuk git).
+Peta leetspeak: `a=4/@`, `e=3`, `i=1/!`, `o=0`, `s=5/$`, `g=9/6`, `t=7`. Simbol tidak dipakai di awal atau akhir kata.
+Dengan `--case --repeat 2 --max 0` hasilnya sekitar 280 ribu baris, jadi pakai `--max` untuk membatasi.
 
 ## Kontribusi
 
-Tambah baris ke `data/words.csv` dalam bentuk **dinormalkan** (huruf kecil, tanpa angka, tanpa huruf ganda), lalu jalankan `python badwords.py`.
+Tambah baris ke `data/words.csv` dalam bentuk **dinormalkan** (huruf kecil, tanpa angka, tanpa huruf ganda), lalu jalankan `python main.py --test`.
+
+## Catatan
+
+Kata baru ditambah dari pengetahuan umum, belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi.
 
 ## License
 [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/legalcode)
