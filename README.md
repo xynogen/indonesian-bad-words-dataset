@@ -1,9 +1,11 @@
 # Indonesian Bad Words Dataset
 
-Daftar kata kasar bahasa Indonesia (kata dasar) dan skrip untuk membuat file besar berisi variannya
-(leetspeak `k0nt0l`, huruf ganda `kontolll`, huruf besar/kecil, simbol `anj!ng`). Dataset belum lengkap; kontribusi diterima.
+313 kata kasar bahasa Indonesia dari survei mahasiswa Politeknik Negeri Sriwijaya (2020), sudah dibersihkan,
+dinormalkan, dan diberi kategori. `main.py` mengubahnya menjadi ribuan varian ejaan (`k0nt0l`, `kontolll`, `ANJ!NG`)
+dalam CSV atau JSON, siap dipakai untuk filter kata, moderasi konten, atau data latih NLP.
 
-*Indonesian profanity base-word list and a small CLI that generates a large variant file (CSV/JSON).*
+*313 Indonesian profanity base words from a 2020 student survey, cleaned and categorized, plus a CLI that expands them
+into thousands of spelling variants (CSV/JSON) for filtering, moderation, or NLP training.*
 
 ## Struktur
 
