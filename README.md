@@ -42,7 +42,7 @@ Tambah baris ke `data/words.csv` dalam bentuk **dinormalkan** (huruf kecil, tanp
 ## Asal data
 
 Kata dasar berasal dari survei mahasiswa Politeknik Negeri Sriwijaya, awal 2020, lalu dibersihkan dan dinormalkan
-(varian ejaan digabung jadi satu kata dasar). Kolom `source` di `data/words.csv`: `lama` (279 kata, dari survei) dan
+(varian ejaan digabung jadi satu kata dasar). Kolom `source` di `data/words.csv`: `survey` (279 kata, dari survei) dan
 `baru` (34 kata, ditambah belakangan dari pengetahuan umum).
 
 ## Catatan
