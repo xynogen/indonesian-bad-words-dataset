@@ -49,17 +49,13 @@ Kata dasar berasal dari survei mahasiswa Politeknik Negeri Sriwijaya, awal 2020,
 
 Kata `baru` belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi.
 
-## Anotator
-
-[@rianrahmanda](https://github.com/rianrahmanda)
-
 ## Sitasi
 
 Lihat `CITATION.cff` (tombol *Cite this repository* di GitHub).
 
 ```bibtex
-@software{Rianrahmanda_Indonesian_Bad_Words_Dataset_2026,
-  author = {rianrahmanda and Fikri, Muhammad},
+@software{Fikri_Indonesian_Bad_Words_Dataset_2026,
+  author = {Fikri, Muhammad},
   month = {11},
   title = {{Indonesian Bad Words Dataset}},
   url = {https://github.com/xynogen/indonesian-bad-words-dataset},
