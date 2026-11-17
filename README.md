@@ -44,4 +44,4 @@ Tambah baris ke `data/words.csv` dalam bentuk **dinormalkan** (huruf kecil, tanp
 Kata baru ditambah dari pengetahuan umum, belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi.
 
 ## License
-[CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/legalcode)
+[MIT](LICENSE). Boleh dipakai, termasuk untuk komersial. Sebelumnya CC BY-NC (non-komersial); sejak lisensi ini berubah, lisensi lama tidak berlaku lagi untuk versi baru.
