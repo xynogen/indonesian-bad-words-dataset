@@ -52,11 +52,7 @@ python main.py --test
 
 Kata dasar berasal dari survei mahasiswa Politeknik Negeri Sriwijaya, awal 2020, lalu dibersihkan dan dinormalkan
 (varian ejaan digabung jadi satu kata dasar). Kolom `source` di `data/words.csv`: `survey` (279 kata, dari survei) dan
-`baru` (34 kata, ditambah belakangan dari pengetahuan umum).
-
-## Catatan
-
-Kata `baru` belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi.
+`ai` (34 kata, ditambah dengan bantuan AI).
 
 ## Surveyor
 

@@ -52,7 +52,7 @@ def test():
     assert len({r["word"] for r in rows}) == len(rows), "duplicate word"
     for r in rows:
         assert r["word"] == r["word"].strip().lower() and deleet(r["word"]) == r["word"], r
-        assert r["ambiguous"] in ("0", "1") and r["source"] in ("survey", "baru"), r
+        assert r["ambiguous"] in ("0", "1") and r["source"] in ("survey", "ai"), r
         squash = re.sub(r"(.)\1+", r"\1", r["word"])
         for v in variants(r["word"], True, 2):              # every variant maps back to its word
             assert re.sub(r"(.)\1+", r"\1", deleet(v)) == squash, (v, r)
