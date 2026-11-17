@@ -49,5 +49,18 @@ Kata dasar berasal dari survei mahasiswa Politeknik Negeri Sriwijaya, awal 2020,
 
 Kata `baru` belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi.
 
+## Sitasi
+
+Lihat `CITATION.cff` (tombol *Cite this repository* di GitHub).
+
+```bibtex
+@dataset{fikri_indonesian_bad_words,
+  author = {Fikri, Muhammad},
+  title  = {Indonesian Bad Words Dataset},
+  url    = {https://github.com/xynogen/indonesian-bad-words-dataset},
+  note   = {Survei mahasiswa Politeknik Negeri Sriwijaya, awal 2020}
+}
+```
+
 ## License
-[MIT](LICENSE). Boleh dipakai bebas, termasuk komersial.
+[MIT](LICENSE)

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+type: dataset
+title: "Indonesian Bad Words Dataset"
+abstract: "Indonesian profanity base-word list from a Politeknik Negeri Sriwijaya student survey (early 2020), cleaned and normalized, with a CLI that generates spelling variants."
+authors:
+  - family-names: Fikri
+    given-names: Muhammad
+repository-code: "https://github.com/xynogen/indonesian-bad-words-dataset"
+license: MIT
+keywords: [indonesian, profanity, bad-words, nlp, dataset]
