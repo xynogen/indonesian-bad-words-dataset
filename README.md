@@ -51,7 +51,7 @@ Kata dasar berasal dari survei mahasiswa Politeknik Negeri Sriwijaya, awal 2020,
 
 Kata `baru` belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi.
 
-## Anotator
+## Surveyor
 
 Rian Ramanda Putra ([@rianrahmanda](https://github.com/rianrahmanda))
 
