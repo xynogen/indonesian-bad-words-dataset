@@ -58,12 +58,12 @@ Rian Ramanda Putra ([@rianrahmanda](https://github.com/rianrahmanda))
 Lihat `CITATION.cff` (tombol *Cite this repository* di GitHub).
 
 ```bibtex
-@software{Putra_Indonesian_Bad_Words_Dataset_2026,
+@software{Putra_Indonesian_Bad_Words_Dataset_2020,
   author = {Putra, Rian Ramanda and Fikri, Muhammad},
-  month = {11},
   title = {{Indonesian Bad Words Dataset}},
   url = {https://github.com/xynogen/indonesian-bad-words-dataset},
-  year = {2026}
+  year = {2020},
+  note = {Data collected early 2020; cleaned and normalized in 2026}
 }
 ```
 

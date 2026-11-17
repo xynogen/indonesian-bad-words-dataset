@@ -10,5 +10,6 @@ authors:
   - family-names: Fikri
     given-names: Muhammad
 repository-code: "https://github.com/xynogen/indonesian-bad-words-dataset"
+date-released: 2020-10-15
 license: MIT
 keywords: [indonesian, profanity, bad-words, nlp, dataset]
