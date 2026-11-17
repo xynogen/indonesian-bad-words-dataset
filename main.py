@@ -1,4 +1,4 @@
-"""Generate varian (leetspeak, huruf besar/kecil, huruf ganda) dari data/words.csv ke file CSV atau JSON.
+"""Generate spelling variants (leetspeak, letter case, repeated last letter) of data/words.csv into CSV or JSON.
 
   python main.py -o out/variants.csv
   python main.py -o out/variants.json --case --repeat 2 --max 0
@@ -13,22 +13,21 @@ import re
 import sys
 
 WORDS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "words.csv")
-LEET = str.maketrans("43105@!96$7", "aeiosaiggst")  # kebalikan dari substitusi di bawah
 DIGIT = {"a": "4", "e": "3", "i": "1", "o": "0", "s": "5", "g": "9", "t": "7"}
-SYMBOL = {"a": "@", "i": "!", "s": "$"}  # simbol hanya di tengah kata
+SYMBOL = {"a": "@", "i": "!", "s": "$"}  # only inside a word, never first or last
 EXTRA = {"g": "6"}
+LEET = str.maketrans("4310579@!$6", "aeiostgaisg")  # inverse of the three maps above
 
 
-def normalize(text):
-    """Kebalikan generator: huruf kecil, leetspeak jadi huruf, huruf ganda jadi satu."""
-    text = re.sub(r"[^a-z ]", "", text.lower().translate(LEET))
-    return re.sub(r"(.)\1+", r"\1", text)
+def deleet(text):
+    """Inverse of the generator, minus the repeated-letter step: lower case, leetspeak back to letters."""
+    return re.sub(r"[^a-z ]", "", text.lower().translate(LEET))
 
 
 def variants(word, use_case, rep):
-    words = [word + word[-1] * k for k in range(rep + 1)]
+    """All leetspeak combinations of word (and of word with its last letter repeated up to rep extra times)."""
     out = set()
-    for w in words:
+    for w in (word + word[-1] * k for k in range(rep + 1)):
         opts = []
         for i, ch in enumerate(w):
             edge = i in (0, len(w) - 1) or " " in w[i - 1:i + 2]
@@ -37,17 +36,27 @@ def variants(word, use_case, rep):
         out.update("".join(c) for c in itertools.product(*opts))
     if use_case:
         out |= {f(v) for v in out for f in (str.upper, str.title)}
-    # Buang yang tidak kembali ke kata dasar atau tidak punya huruf sama sekali.
-    ok = [v for v in out if normalize(v) == word and re.search("[a-z]", v, re.I)]
-    return sorted(ok, key=lambda v: (sum(a != b for a, b in zip(v, word)), len(v), v))
+    # Drop variants with no letter left ("tt" -> "77"), they would match plain numbers.
+    out = [v for v in out if re.search("[a-z]", v, re.I)]
+    return sorted(out, key=lambda v: (sum(a != b for a, b in zip(v.lower(), word)), len(v), v))
 
 
 def test():
     assert "k0nt0ll" in variants("kontol", False, 2)
-    assert "KONTOL" in variants("kontol", True, 0)
-    assert all(not v.startswith("!") for v in variants("anjing", False, 0))
-    assert normalize("4nj1ngg") == "anjing" and variants("t", False, 0) == ["t"]
-    print("test OK")
+    assert "KONTOL" in variants("kontol", True, 0) and "Kontol" in variants("kontol", True, 0)
+    assert all(v[0] not in "@!$" and v[-1] not in "@!$" for v in variants("anjing", False, 0))
+    assert "b00bs" in variants("boobs", False, 0)        # real double letters stay
+    assert "77" not in variants("tt", False, 0)              # no-letter variants dropped
+    with open(WORDS, encoding="utf-8", newline="") as f:
+        rows = list(csv.DictReader(f))
+    assert len({r["word"] for r in rows}) == len(rows), "duplicate word"
+    for r in rows:
+        assert r["word"] == r["word"].strip().lower() and deleet(r["word"]) == r["word"], r
+        assert r["ambiguous"] in ("0", "1") and r["source"] in ("survey", "baru"), r
+        squash = re.sub(r"(.)\1+", r"\1", r["word"])
+        for v in variants(r["word"], True, 2):              # every variant maps back to its word
+            assert re.sub(r"(.)\1+", r"\1", deleet(v)) == squash, (v, r)
+    print(f"test OK, {len(rows)} words")
 
 
 def main():

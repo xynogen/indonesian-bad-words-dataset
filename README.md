@@ -37,11 +37,12 @@ python main.py --test                                           # cek bawaan
 
 Kolom keluaran: `variant, word, category`. Hasil ada di `out/` (tidak masuk git).
 Peta leetspeak: `a=4/@`, `e=3`, `i=1/!`, `o=0`, `s=5/$`, `g=9/6`, `t=7`. Simbol tidak dipakai di awal atau akhir kata.
-Dengan `--case --repeat 2 --max 0` hasilnya sekitar 280 ribu baris, jadi pakai `--max` untuk membatasi.
+Dengan `--case --repeat 2 --max 0` hasilnya sekitar 284 ribu baris, jadi pakai `--max` untuk membatasi.
 
 ## Kontribusi
 
-Tambah baris ke `data/words.csv` dalam bentuk **dinormalkan** (huruf kecil, tanpa angka, tanpa huruf ganda), lalu cek:
+Tambah baris ke `data/words.csv` dalam ejaan dasar: huruf kecil, tanpa angka atau simbol, tanpa huruf yang dipanjangkan
+(`kontol`, bukan `kontolll`). Huruf ganda asli tetap ditulis (`boobs`, `dajjal`). Lalu cek:
 
 ```bash
 python main.py --test
