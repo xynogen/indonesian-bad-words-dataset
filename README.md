@@ -19,10 +19,12 @@ Kategori: `makian`, `seksual`, `hewan`, `bodoh`, `inggris`.
 
 ## Pakai
 
+```bash
 python main.py -o out/variants.csv                              # leetspeak, maks 50 varian per kata
 python main.py -o out/variants.json --case --repeat 2 --max 0   # semua varian, plus huruf besar dan huruf ganda
 python main.py --category hewan -o -                            # ke stdout
-python main.py --test
+python main.py --test                                           # cek bawaan
+```
 
 | Opsi | Arti |
 |---|---|
@@ -39,7 +41,11 @@ Dengan `--case --repeat 2 --max 0` hasilnya sekitar 280 ribu baris, jadi pakai `
 
 ## Kontribusi
 
-Tambah baris ke `data/words.csv` dalam bentuk **dinormalkan** (huruf kecil, tanpa angka, tanpa huruf ganda), lalu jalankan `python main.py --test`.
+Tambah baris ke `data/words.csv` dalam bentuk **dinormalkan** (huruf kecil, tanpa angka, tanpa huruf ganda), lalu cek:
+
+```bash
+python main.py --test
+```
 
 ## Asal data
 
