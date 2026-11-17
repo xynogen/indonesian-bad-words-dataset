@@ -54,11 +54,12 @@ Kata `baru` belum diuji pada teks nyata. Cek dulu sebelum dipakai untuk moderasi
 Lihat `CITATION.cff` (tombol *Cite this repository* di GitHub).
 
 ```bibtex
-@dataset{fikri_indonesian_bad_words,
+@software{Fikri_Indonesian_Bad_Words_Dataset_2026,
   author = {Fikri, Muhammad},
-  title  = {Indonesian Bad Words Dataset},
-  url    = {https://github.com/xynogen/indonesian-bad-words-dataset},
-  note   = {Survei mahasiswa Politeknik Negeri Sriwijaya, awal 2020}
+  month = {11},
+  title = {{Indonesian Bad Words Dataset}},
+  url = {https://github.com/xynogen/indonesian-bad-words-dataset},
+  year = {2026}
 }
 ```
 
